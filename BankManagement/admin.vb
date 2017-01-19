@@ -1,6 +1,4 @@
-﻿Public Class Gestion
-
-
+﻿Public Class admin
     Sub New()
 
 
@@ -42,20 +40,5 @@
 
     End Sub
 
-    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
-        Base.Show()
-        Me.Close()
-    End Sub
-
-    Private Sub pan_body_Paint(sender As Object, e As PaintEventArgs) Handles pan_body.Paint
-
-    End Sub
-
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-
-        Base.Show()
-        Me.Close()
-
-    End Sub
 
 End Class

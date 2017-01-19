@@ -1,5 +1,4 @@
-﻿Public Class Gestion
-
+﻿Public Class GestionDeCuentas
 
     Sub New()
 
@@ -47,15 +46,12 @@
         Me.Close()
     End Sub
 
-    Private Sub pan_body_Paint(sender As Object, e As PaintEventArgs) Handles pan_body.Paint
-
-    End Sub
-
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) 
 
         Base.Show()
         Me.Close()
 
     End Sub
+
 
 End Class
