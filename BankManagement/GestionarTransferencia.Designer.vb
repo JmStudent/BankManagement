@@ -22,7 +22,11 @@ Partial Class GestionarTransferencia
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.panHeader = New System.Windows.Forms.Panel()
+        Me.pbBack = New System.Windows.Forms.PictureBox()
+        Me.pbClose = New System.Windows.Forms.PictureBox()
+        Me.pbLogo = New System.Windows.Forms.PictureBox()
         Me.panBody = New System.Windows.Forms.Panel()
         Me.txtConEx = New System.Windows.Forms.TextBox()
         Me.lblConEx = New System.Windows.Forms.Label()
@@ -47,21 +51,20 @@ Partial Class GestionarTransferencia
         Me.cbEO = New System.Windows.Forms.ComboBox()
         Me.lblEO = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblClean = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.pbMake = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblClean = New System.Windows.Forms.Label()
         Me.pbRefresh = New System.Windows.Forms.PictureBox()
-        Me.pbBack = New System.Windows.Forms.PictureBox()
-        Me.pbClose = New System.Windows.Forms.PictureBox()
-        Me.pbLogo = New System.Windows.Forms.PictureBox()
+        Me.epCD = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.panHeader.SuspendLayout()
+        CType(Me.pbBack, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbClose, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panBody.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.pbMake, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbRefresh, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pbBack, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pbClose, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.epCD, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panHeader
@@ -75,6 +78,41 @@ Partial Class GestionarTransferencia
         Me.panHeader.Name = "panHeader"
         Me.panHeader.Size = New System.Drawing.Size(1600, 100)
         Me.panHeader.TabIndex = 0
+        '
+        'pbBack
+        '
+        Me.pbBack.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbBack.Image = Global.BankManagement.My.Resources.Resources.backv2
+        Me.pbBack.Location = New System.Drawing.Point(34, 16)
+        Me.pbBack.Name = "pbBack"
+        Me.pbBack.Size = New System.Drawing.Size(63, 63)
+        Me.pbBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbBack.TabIndex = 2
+        Me.pbBack.TabStop = False
+        '
+        'pbClose
+        '
+        Me.pbClose.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbClose.Image = Global.BankManagement.My.Resources.Resources.closeIconv3
+        Me.pbClose.Location = New System.Drawing.Point(1516, 16)
+        Me.pbClose.Name = "pbClose"
+        Me.pbClose.Size = New System.Drawing.Size(63, 63)
+        Me.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbClose.TabIndex = 1
+        Me.pbClose.TabStop = False
+        '
+        'pbLogo
+        '
+        Me.pbLogo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pbLogo.Image = Global.BankManagement.My.Resources.Resources.logov3
+        Me.pbLogo.Location = New System.Drawing.Point(544, 16)
+        Me.pbLogo.Name = "pbLogo"
+        Me.pbLogo.Size = New System.Drawing.Size(500, 63)
+        Me.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.pbLogo.TabIndex = 0
+        Me.pbLogo.TabStop = False
         '
         'panBody
         '
@@ -339,16 +377,16 @@ Partial Class GestionarTransferencia
         Me.Panel1.Size = New System.Drawing.Size(1600, 100)
         Me.Panel1.TabIndex = 0
         '
-        'lblClean
+        'pbMake
         '
-        Me.lblClean.AutoSize = True
-        Me.lblClean.Font = New System.Drawing.Font("Arial", 22.0!, System.Drawing.FontStyle.Bold)
-        Me.lblClean.Location = New System.Drawing.Point(677, 23)
-        Me.lblClean.Name = "lblClean"
-        Me.lblClean.Size = New System.Drawing.Size(202, 51)
-        Me.lblClean.TabIndex = 23
-        Me.lblClean.Text = "LIMPIAR"
-        Me.lblClean.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.pbMake.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbMake.Image = Global.BankManagement.My.Resources.Resources.transferv1
+        Me.pbMake.Location = New System.Drawing.Point(1391, 7)
+        Me.pbMake.Name = "pbMake"
+        Me.pbMake.Size = New System.Drawing.Size(80, 80)
+        Me.pbMake.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbMake.TabIndex = 25
+        Me.pbMake.TabStop = False
         '
         'Label1
         '
@@ -361,16 +399,16 @@ Partial Class GestionarTransferencia
         Me.Label1.Text = "REALIZAR"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'pbMake
+        'lblClean
         '
-        Me.pbMake.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbMake.Image = Global.BankManagement.My.Resources.Resources.transferv1
-        Me.pbMake.Location = New System.Drawing.Point(1391, 7)
-        Me.pbMake.Name = "pbMake"
-        Me.pbMake.Size = New System.Drawing.Size(80, 80)
-        Me.pbMake.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbMake.TabIndex = 25
-        Me.pbMake.TabStop = False
+        Me.lblClean.AutoSize = True
+        Me.lblClean.Font = New System.Drawing.Font("Arial", 22.0!, System.Drawing.FontStyle.Bold)
+        Me.lblClean.Location = New System.Drawing.Point(677, 23)
+        Me.lblClean.Name = "lblClean"
+        Me.lblClean.Size = New System.Drawing.Size(202, 51)
+        Me.lblClean.TabIndex = 23
+        Me.lblClean.Text = "LIMPIAR"
+        Me.lblClean.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'pbRefresh
         '
@@ -383,40 +421,9 @@ Partial Class GestionarTransferencia
         Me.pbRefresh.TabIndex = 0
         Me.pbRefresh.TabStop = False
         '
-        'pbBack
+        'epCuentas
         '
-        Me.pbBack.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbBack.Image = Global.BankManagement.My.Resources.Resources.backv2
-        Me.pbBack.Location = New System.Drawing.Point(34, 16)
-        Me.pbBack.Name = "pbBack"
-        Me.pbBack.Size = New System.Drawing.Size(63, 63)
-        Me.pbBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbBack.TabIndex = 2
-        Me.pbBack.TabStop = False
-        '
-        'pbClose
-        '
-        Me.pbClose.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbClose.Image = Global.BankManagement.My.Resources.Resources.closeIconv3
-        Me.pbClose.Location = New System.Drawing.Point(1516, 16)
-        Me.pbClose.Name = "pbClose"
-        Me.pbClose.Size = New System.Drawing.Size(63, 63)
-        Me.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbClose.TabIndex = 1
-        Me.pbClose.TabStop = False
-        '
-        'pbLogo
-        '
-        Me.pbLogo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pbLogo.Image = Global.BankManagement.My.Resources.Resources.logov3
-        Me.pbLogo.Location = New System.Drawing.Point(544, 16)
-        Me.pbLogo.Name = "pbLogo"
-        Me.pbLogo.Size = New System.Drawing.Size(500, 63)
-        Me.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.pbLogo.TabIndex = 0
-        Me.pbLogo.TabStop = False
+        Me.epCD.ContainerControl = Me
         '
         'GestionarTransferencia
         '
@@ -431,15 +438,16 @@ Partial Class GestionarTransferencia
         Me.Text = "GestionarMovimiento"
         Me.panHeader.ResumeLayout(False)
         Me.panHeader.PerformLayout()
+        CType(Me.pbBack, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbClose, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panBody.ResumeLayout(False)
         Me.panBody.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.pbMake, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbRefresh, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pbBack, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pbClose, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.epCD, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -476,4 +484,5 @@ Partial Class GestionarTransferencia
     Friend WithEvents lblClean As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents pbMake As PictureBox
+    Friend WithEvents epCD As ErrorProvider
 End Class
