@@ -24,48 +24,38 @@ Partial Class Register
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.panHeader = New System.Windows.Forms.Panel()
-        Me.pbLogo = New System.Windows.Forms.PictureBox()
         Me.panBody = New System.Windows.Forms.Panel()
         Me.epCif = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.epName = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.epAddress = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.pbClose = New System.Windows.Forms.PictureBox()
+        Me.pbLogo = New System.Windows.Forms.PictureBox()
         Me.panHeader.SuspendLayout()
-        CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.epCif, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.epName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.epAddress, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbClose, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panHeader
         '
         Me.panHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(104, Byte), Integer), CType(CType(176, Byte), Integer))
+        Me.panHeader.Controls.Add(Me.pbClose)
         Me.panHeader.Controls.Add(Me.pbLogo)
         Me.panHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.panHeader.Location = New System.Drawing.Point(0, 0)
         Me.panHeader.Name = "panHeader"
-        Me.panHeader.Size = New System.Drawing.Size(1600, 116)
+        Me.panHeader.Size = New System.Drawing.Size(1600, 100)
         Me.panHeader.TabIndex = 0
-        '
-        'pbLogo
-        '
-        Me.pbLogo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pbLogo.Image = Global.BankManagement.My.Resources.Resources.logov3
-        Me.pbLogo.Location = New System.Drawing.Point(544, 16)
-        Me.pbLogo.Name = "pbLogo"
-        Me.pbLogo.Size = New System.Drawing.Size(500, 63)
-        Me.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.pbLogo.TabIndex = 1
-        Me.pbLogo.TabStop = False
         '
         'panBody
         '
         Me.panBody.BackColor = System.Drawing.Color.White
         Me.panBody.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panBody.Location = New System.Drawing.Point(0, 116)
+        Me.panBody.Location = New System.Drawing.Point(0, 100)
         Me.panBody.Name = "panBody"
-        Me.panBody.Size = New System.Drawing.Size(1600, 784)
+        Me.panBody.Size = New System.Drawing.Size(1600, 800)
         Me.panBody.TabIndex = 1
         '
         'epCif
@@ -80,6 +70,30 @@ Partial Class Register
         '
         Me.epAddress.ContainerControl = Me
         '
+        'pbClose
+        '
+        Me.pbClose.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbClose.Image = Global.BankManagement.My.Resources.Resources.closeIconv3
+        Me.pbClose.Location = New System.Drawing.Point(1516, 16)
+        Me.pbClose.Name = "pbClose"
+        Me.pbClose.Size = New System.Drawing.Size(63, 63)
+        Me.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbClose.TabIndex = 2
+        Me.pbClose.TabStop = False
+        '
+        'pbLogo
+        '
+        Me.pbLogo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pbLogo.Image = Global.BankManagement.My.Resources.Resources.logov3
+        Me.pbLogo.Location = New System.Drawing.Point(544, 16)
+        Me.pbLogo.Name = "pbLogo"
+        Me.pbLogo.Size = New System.Drawing.Size(500, 63)
+        Me.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.pbLogo.TabIndex = 1
+        Me.pbLogo.TabStop = False
+        '
         'Register
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -93,10 +107,11 @@ Partial Class Register
         Me.Text = "Register"
         Me.panHeader.ResumeLayout(False)
         Me.panHeader.PerformLayout()
-        CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.epCif, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.epName, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.epAddress, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbClose, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -107,4 +122,5 @@ Partial Class Register
     Friend WithEvents epCif As ErrorProvider
     Friend WithEvents epName As ErrorProvider
     Friend WithEvents epAddress As ErrorProvider
+    Friend WithEvents pbClose As PictureBox
 End Class

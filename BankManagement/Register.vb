@@ -10,7 +10,6 @@
     Dim lblAddress As New Label
     Dim txtAddress As New TextBox
     Private Sub Register_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        panHeader.Height = oneRow()
         pbLogo.SetBounds(oneColumn() * 2.3, 0, 500, 63)
         ' SET BOX FORM
         pbBox.BorderStyle = BorderStyle.FixedSingle
@@ -101,6 +100,13 @@
         Base.Show()
         Me.Close()
     End Sub
+    Private Sub pbClose_Click(sender As Object, e As EventArgs) Handles pbClose.Click
+        Dim returned As Integer
+        returned = MessageBox.Show("¿Está seguro que desea salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If returned = 6 Then
+            Me.Close()
+        End If
+    End Sub
     Private Sub lblBtnReg_Click(sender As Object, e As EventArgs)
         ' ERROR DEFINITION
         Dim cifRight As Boolean = False
@@ -119,7 +125,7 @@
             nameRight = True
         End If
         If txtAddress.Text = "" Then
-            epAddress.SetError(txtAddress, "El campo CIF no puede quedar vacío")
+            epAddress.SetError(txtAddress, "El campo Dirección de la empresa no puede quedar vacío")
             addressRight = False
         Else
             addressRight = True
@@ -129,20 +135,23 @@
             Dim ds As New DataSet
             Dim query As String
             query = "SELECT CIF FROM empresas where CIF = '" & txtCIF.Text & "'"
-            ds = ad.query(query)
-            If ds.Tables(0).Rows().Count = 1 Then
-                MessageBox.Show("Esta empresa ya está registrada", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                txtCIF.Text = ""
-                txtName.Text = ""
-                txtAddress.Text = ""
-            Else
-                'pass son los 4 últimos dígitos del cif
-                Dim pass As String = txtCIF.Text.Substring(6)
-                query = "INSERT INTO empresas VALUES('" & txtCIF.Text.ToUpper & "','" & pass & "'
+            Try
+                ds = ad.query(query)
+                If ds.Tables(0).Rows().Count = 1 Then
+                    MessageBox.Show("Esta empresa ya está registrada", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    txtCIF.Text = ""
+                    txtName.Text = ""
+                    txtAddress.Text = ""
+                Else
+                    Dim pass As String = txtCIF.Text.Substring(6)
+                    query = "INSERT INTO empresas VALUES('" & txtCIF.Text.ToUpper & "','" & pass & "'
                         ,'" & txtName.Text & "','" & txtAddress.Text & "', 0)"
-                ad.cud(query)
-                MessageBox.Show("Empresa registrada con éxito. El administrador debe desbloquear su cuenta", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
-            End If
+                    ad.cud(query)
+                    MessageBox.Show("Empresa registrada con éxito. El administrador debe desbloquear su cuenta", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+                End If
+            Catch ex As Exception
+                MessageBox.Show("No se puede conectar con la base de datos", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
         End If
     End Sub
     ' RESPONSIVE

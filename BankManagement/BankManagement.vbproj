@@ -80,6 +80,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GestionarTransferencia.Designer.vb">
+      <DependentUpon>GestionarTransferencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarTransferencia.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -106,6 +112,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionarTransferencia.resx">
+      <DependentUpon>GestionarTransferencia.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -137,6 +146,27 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeIconv2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeIconv3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backv2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refreshv2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refreshv3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transferv1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
