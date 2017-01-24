@@ -47,6 +47,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\Documents\Dam\2º\Desarrollo de Interfaces\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -72,6 +75,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -82,9 +86,7 @@
     <Compile Include="Gestionarmovimiento.Designer.vb">
       <DependentUpon>Gestionarmovimiento.vb</DependentUpon>
     </Compile>
-    <Compile Include="Gestionarmovimiento.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Gestionarmovimiento.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

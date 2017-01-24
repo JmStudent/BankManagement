@@ -1,4 +1,5 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿Imports MySql.Data.MySqlClient
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Gestionarmovimiento
     Inherits System.Windows.Forms.Form
 
@@ -25,17 +26,17 @@ Partial Class Gestionarmovimiento
         Me.Panelencabezado = New System.Windows.Forms.Panel()
         Me.gridviewgestionmov = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Referencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaValor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Salod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.panelbusqueda = New System.Windows.Forms.Panel()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.cbnombreempresa = New System.Windows.Forms.ComboBox()
         Me.botonseleccionar = New System.Windows.Forms.Button()
         Me.labelcuentaempresa = New System.Windows.Forms.Label()
         Me.Labelnomempresa = New System.Windows.Forms.Label()
-        Me.Referencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaValor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Salod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.gridviewgestionmov.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelbusqueda.SuspendLayout()
@@ -47,7 +48,7 @@ Partial Class Gestionarmovimiento
         Me.Panelencabezado.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panelencabezado.Location = New System.Drawing.Point(0, 0)
         Me.Panelencabezado.Name = "Panelencabezado"
-        Me.Panelencabezado.Size = New System.Drawing.Size(1582, 95)
+        Me.Panelencabezado.Size = New System.Drawing.Size(1530, 95)
         Me.Panelencabezado.TabIndex = 0
         '
         'gridviewgestionmov
@@ -60,7 +61,7 @@ Partial Class Gestionarmovimiento
         Me.gridviewgestionmov.Location = New System.Drawing.Point(0, 94)
         Me.gridviewgestionmov.Margin = New System.Windows.Forms.Padding(3, 3, 3, 2)
         Me.gridviewgestionmov.Name = "gridviewgestionmov"
-        Me.gridviewgestionmov.Size = New System.Drawing.Size(1582, 767)
+        Me.gridviewgestionmov.Size = New System.Drawing.Size(1536, 767)
         Me.gridviewgestionmov.TabIndex = 1
         '
         'DataGridView1
@@ -69,11 +70,41 @@ Partial Class Gestionarmovimiento
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Referencia, Me.Fecha, Me.FechaValor, Me.Importe, Me.Salod})
         Me.DataGridView1.GridColor = System.Drawing.SystemColors.AppWorkspace
-        Me.DataGridView1.Location = New System.Drawing.Point(102, 370)
+        Me.DataGridView1.Location = New System.Drawing.Point(11, 370)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1317, 352)
+        Me.DataGridView1.Size = New System.Drawing.Size(1509, 365)
         Me.DataGridView1.TabIndex = 1
+        '
+        'Referencia
+        '
+        Me.Referencia.HeaderText = "Referencia"
+        Me.Referencia.Name = "Referencia"
+        Me.Referencia.Width = 250
+        '
+        'Fecha
+        '
+        Me.Fecha.HeaderText = "Fecha"
+        Me.Fecha.Name = "Fecha"
+        Me.Fecha.Width = 200
+        '
+        'FechaValor
+        '
+        Me.FechaValor.HeaderText = "Fechavalor"
+        Me.FechaValor.Name = "FechaValor"
+        Me.FechaValor.Width = 200
+        '
+        'Importe
+        '
+        Me.Importe.HeaderText = "Importe"
+        Me.Importe.Name = "Importe"
+        Me.Importe.Width = 220
+        '
+        'Salod
+        '
+        Me.Salod.HeaderText = "Saldo"
+        Me.Salod.Name = "Salod"
+        Me.Salod.Width = 218
         '
         'panelbusqueda
         '
@@ -145,41 +176,11 @@ Partial Class Gestionarmovimiento
         Me.Labelnomempresa.TabIndex = 0
         Me.Labelnomempresa.Text = "Empresa:"
         '
-        'Referencia
-        '
-        Me.Referencia.HeaderText = "Referencia"
-        Me.Referencia.Name = "Referencia"
-        Me.Referencia.Width = 200
-        '
-        'Fecha
-        '
-        Me.Fecha.HeaderText = "Fecha"
-        Me.Fecha.Name = "Fecha"
-        Me.Fecha.Width = 200
-        '
-        'FechaValor
-        '
-        Me.FechaValor.HeaderText = "Fechavalor"
-        Me.FechaValor.Name = "FechaValor"
-        Me.FechaValor.Width = 200
-        '
-        'Importe
-        '
-        Me.Importe.HeaderText = "Importe"
-        Me.Importe.Name = "Importe"
-        Me.Importe.Width = 190
-        '
-        'Salod
-        '
-        Me.Salod.HeaderText = "Saldo"
-        Me.Salod.Name = "Salod"
-        Me.Salod.Width = 190
-        '
         'Gestionarmovimiento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1582, 853)
+        Me.ClientSize = New System.Drawing.Size(1530, 853)
         Me.Controls.Add(Me.gridviewgestionmov)
         Me.Controls.Add(Me.Panelencabezado)
         Me.Name = "Gestionarmovimiento"
@@ -207,4 +208,37 @@ Partial Class Gestionarmovimiento
     Friend WithEvents FechaValor As DataGridViewTextBoxColumn
     Friend WithEvents Importe As DataGridViewTextBoxColumn
     Friend WithEvents Salod As DataGridViewTextBoxColumn
+
+    Dim ad As New Datos
+    Private Sub botonseleccionar_Click(sender As Object, e As EventArgs) Handles botonseleccionar.Click
+        If cbnombreempresa.SelectedItem Is Nothing Or ComboBox1.SelectedItem Is Nothing Then
+            MsgBox("Campos vacíos")
+        End If
+    End Sub
+
+    Private Sub cbnombreempresa_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbnombreempresa.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+
+    Private Sub Gestionarmovimiento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim consulta As String
+        Dim dsconsulta As DataSet
+        Dim i As Integer
+
+        consulta = "SELECT * FROM Empresas"
+        dsconsulta = ad.consultar(consulta)
+
+        For i = 0 To dsconsulta.Tables(0).Rows.Count - 1
+            cbnombreempresa.DataSource = dsconsulta.Tables(0)
+            cbnombreempresa.DisplayMember = "nombre"
+        Next
+    End Sub
 End Class
