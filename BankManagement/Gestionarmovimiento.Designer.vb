@@ -121,6 +121,7 @@ Partial Class Gestionarmovimiento
         '
         'ComboBox1
         '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ComboBox1.Location = New System.Drawing.Point(138, 71)
@@ -131,6 +132,7 @@ Partial Class Gestionarmovimiento
         'cbnombreempresa
         '
         Me.cbnombreempresa.BackColor = System.Drawing.Color.White
+        Me.cbnombreempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbnombreempresa.FormattingEnabled = True
         Me.cbnombreempresa.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.cbnombreempresa.Location = New System.Drawing.Point(155, 31)
@@ -211,8 +213,13 @@ Partial Class Gestionarmovimiento
 
     Dim ad As New Datos
     Private Sub botonseleccionar_Click(sender As Object, e As EventArgs) Handles botonseleccionar.Click
+        Dim consulta As String
+        Dim dsconsulta As DataSet
+
         If cbnombreempresa.SelectedItem Is Nothing Or ComboBox1.SelectedItem Is Nothing Then
             MsgBox("Campos vacíos")
+        Else
+            consulta = "SELECT * FROM operaciones WHERE "
         End If
     End Sub
 
@@ -220,9 +227,9 @@ Partial Class Gestionarmovimiento
         Dim consulta As String
         Dim dsconsulta As DataSet
 
-        consulta = "SELECT * FROM Cuentas WHERE CC = (SELECT CC FROM Empresas WHERE nombre='" & cbnombreempresa.Text & "')"
+        consulta = "SELECT * FROM Cuentas WHERE CIF_emp IN (SELECT CIF FROM Empresas WHERE nombre='" & cbnombreempresa.Text & "')"
         dsconsulta = ad.consultar(consulta)
-
+        ComboBox1.DataSource = Nothing
         For i As Integer = 0 To dsconsulta.Tables(0).Rows.Count - 1
             ComboBox1.DataSource = dsconsulta.Tables(0)
             ComboBox1.DisplayMember = "CC"
@@ -249,7 +256,8 @@ Partial Class Gestionarmovimiento
             cbnombreempresa.DisplayMember = "nombre"
         Next
 
-        cbnombreempresa.Text = ""
+        cbnombreempresa.SelectedIndex = -1
+        ComboBox1.SelectedIndex = -1
 
     End Sub
 End Class
