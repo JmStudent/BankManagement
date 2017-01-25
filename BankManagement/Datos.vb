@@ -4,21 +4,12 @@ Public Class Datos
     Public Function conectar()
         Dim txtconexion As String = "server=127.0.0.1;" & "database=bancaonline;uid=root;pwd=;"
         Dim conexion As New MySqlConnection(txtconexion)
-        Try
-            conexion.Open()
-            If conexion.State = ConnectionState.Open Then
-                MsgBox("Conexión abierta")
-            End If
-        Catch ex As Exception
-            MsgBox("Error al conectar con la base de datos")
-        End Try
         Return conexion
     End Function
     Public Sub desconectar(conex As MySqlConnection)
         Try
             If conex.State = ConnectionState.Open Then
                 conex.Close()
-                MsgBox("Conexión cerrada con éxito")
             End If
         Catch ex As Exception
 

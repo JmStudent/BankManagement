@@ -217,7 +217,16 @@ Partial Class Gestionarmovimiento
     End Sub
 
     Private Sub cbnombreempresa_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbnombreempresa.SelectedIndexChanged
+        Dim consulta As String
+        Dim dsconsulta As DataSet
 
+        consulta = "SELECT * FROM Cuentas WHERE CC = (SELECT CC FROM Empresas WHERE nombre='" & cbnombreempresa.Text & "')"
+        dsconsulta = ad.consultar(consulta)
+
+        For i As Integer = 0 To dsconsulta.Tables(0).Rows.Count - 1
+            ComboBox1.DataSource = dsconsulta.Tables(0)
+            ComboBox1.DisplayMember = "CC"
+        Next
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
@@ -231,14 +240,16 @@ Partial Class Gestionarmovimiento
     Private Sub Gestionarmovimiento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim consulta As String
         Dim dsconsulta As DataSet
-        Dim i As Integer
 
         consulta = "SELECT * FROM Empresas"
         dsconsulta = ad.consultar(consulta)
 
-        For i = 0 To dsconsulta.Tables(0).Rows.Count - 1
+        For i As Integer = 0 To dsconsulta.Tables(0).Rows.Count - 1
             cbnombreempresa.DataSource = dsconsulta.Tables(0)
             cbnombreempresa.DisplayMember = "nombre"
         Next
+
+        cbnombreempresa.Text = ""
+
     End Sub
 End Class
