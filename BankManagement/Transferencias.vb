@@ -76,7 +76,7 @@
         query = "INSERT INTO operaciones(`tipo`, `referencias`, `remitente`, `fecha`, `fecha_valor`, `concepto`, `concepto_ext`, `cantidad`, `saldo`, `periodica`) VALUES ('ABONO','" & referencia & "','" & tbremitente.Text & "','" & Date.Today.ToString.Substring(0, 10) & "','" & Date.Today.ToString.Substring(0, 10) & "','" & tbconcepto.Text & "','" & tbconceptoextendido.Text & "', " & CInt(tbcantidad.Text) & "," & cantidad & ",'no')"
         ds = ad.query(query)
 
-        querycc_op1 = "INSERT INTO cc_op (LAST_INSERT_ID(),'" & cbcuantaorigen.Text & "','ABONO'," & cantidad & ")"
+        querycc_op1 = "INSERT INTO cc_op (SELECT LAST_INSERT_ID(),'" & cbcuantaorigen.Text & "','ABONO'," & cantidad & ")"
         ds = ad.query(querycc_op1)
 
     End Sub
