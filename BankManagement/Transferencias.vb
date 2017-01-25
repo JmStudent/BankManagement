@@ -44,7 +44,7 @@
     End Sub
 
     Private Sub transfe()
-        Dim query, querySaldoOrigen, querySaldoDestino, updateorigen, updatedestino, referencia As String
+        Dim query, querySaldoOrigen, querySaldoDestino, updateorigen, updatedestino, referencia, querycc_op1 As String
         Dim ds As New DataSet
         Dim tmo As Integer = cbcuantaorigen.Text.Length
         Dim tmd As Integer = cbcuentadestino.Text.Length
@@ -64,7 +64,7 @@
         cantidad = saldoorigen - cantidad
         MsgBox(cantidad)
         updateorigen = "UPDATE cuentas SET saldo=" & cantidad & " where CC='" & cbcuantaorigen.Text & "' "
-
+        ds = ad.query(updateorigen)
 
 
         cantidad2 = saldodestino + cantidad
@@ -73,8 +73,11 @@
         ds = ad.query(updatedestino)
 
 
-        query = "INSERT INTO operaciones VALUES (2,'ABONO','" & referencia & "','" & tbremitente.Text & "','" & Date.Today.ToString.Substring(0, 10) & "','" & Date.Today.ToString.Substring(0, 10) & "','" & tbconcepto.Text & "','" & tbconceptoextendido.Text & "', " & CInt(tbcantidad.Text) & "," & cantidad & ",'no')"
+        query = "INSERT INTO operaciones(`tipo`, `referencias`, `remitente`, `fecha`, `fecha_valor`, `concepto`, `concepto_ext`, `cantidad`, `saldo`, `periodica`) VALUES ('ABONO','" & referencia & "','" & tbremitente.Text & "','" & Date.Today.ToString.Substring(0, 10) & "','" & Date.Today.ToString.Substring(0, 10) & "','" & tbconcepto.Text & "','" & tbconceptoextendido.Text & "', " & CInt(tbcantidad.Text) & "," & cantidad & ",'no')"
         ds = ad.query(query)
+
+        querycc_op1 = "INSERT INTO cc_op (LAST_INSERT_ID(),'" & cbcuantaorigen.Text & "','ABONO'," & cantidad & ")"
+        ds = ad.query(querycc_op1)
 
     End Sub
 
