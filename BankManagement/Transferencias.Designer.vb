@@ -25,13 +25,21 @@ Partial Class Transferencias
         Me.pan_header = New System.Windows.Forms.Panel()
         Me.lb_header = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.lb_cuanta_origen = New System.Windows.Forms.Label()
-        Me.lb_empresa_destino = New System.Windows.Forms.Label()
-        Me.lb_cuenta_destino = New System.Windows.Forms.Label()
-        Me.lb_remitente = New System.Windows.Forms.Label()
-        Me.lb_cantidad = New System.Windows.Forms.Label()
-        Me.lb_concepto = New System.Windows.Forms.Label()
+        Me.tbconceptoextendido = New System.Windows.Forms.TextBox()
+        Me.tbconcepto = New System.Windows.Forms.TextBox()
+        Me.tbcantidad = New System.Windows.Forms.TextBox()
+        Me.tbremitente = New System.Windows.Forms.TextBox()
+        Me.cbcuentadestino = New System.Windows.Forms.ComboBox()
+        Me.cbempresadestino = New System.Windows.Forms.ComboBox()
+        Me.cbcuantaorigen = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.lb_concepto = New System.Windows.Forms.Label()
+        Me.lb_cantidad = New System.Windows.Forms.Label()
+        Me.lb_remitente = New System.Windows.Forms.Label()
+        Me.lb_cuenta_destino = New System.Windows.Forms.Label()
+        Me.lb_empresa_destino = New System.Windows.Forms.Label()
+        Me.lb_cuanta_origen = New System.Windows.Forms.Label()
+        Me.btn_ = New System.Windows.Forms.Button()
         Me.pan_header.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -62,6 +70,13 @@ Partial Class Transferencias
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.tbconceptoextendido)
+        Me.GroupBox1.Controls.Add(Me.tbconcepto)
+        Me.GroupBox1.Controls.Add(Me.tbcantidad)
+        Me.GroupBox1.Controls.Add(Me.tbremitente)
+        Me.GroupBox1.Controls.Add(Me.cbcuentadestino)
+        Me.GroupBox1.Controls.Add(Me.cbempresadestino)
+        Me.GroupBox1.Controls.Add(Me.cbcuantaorigen)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.lb_concepto)
         Me.GroupBox1.Controls.Add(Me.lb_cantidad)
@@ -77,59 +92,60 @@ Partial Class Transferencias
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Realizar Transferencia"
         '
-        'lb_cuanta_origen
+        'tbconceptoextendido
         '
-        Me.lb_cuanta_origen.AutoSize = True
-        Me.lb_cuanta_origen.Location = New System.Drawing.Point(17, 42)
-        Me.lb_cuanta_origen.Name = "lb_cuanta_origen"
-        Me.lb_cuanta_origen.Size = New System.Drawing.Size(112, 20)
-        Me.lb_cuanta_origen.TabIndex = 0
-        Me.lb_cuanta_origen.Text = "Cuenta Origen"
+        Me.tbconceptoextendido.Location = New System.Drawing.Point(216, 252)
+        Me.tbconceptoextendido.Name = "tbconceptoextendido"
+        Me.tbconceptoextendido.Size = New System.Drawing.Size(211, 26)
+        Me.tbconceptoextendido.TabIndex = 13
         '
-        'lb_empresa_destino
+        'tbconcepto
         '
-        Me.lb_empresa_destino.AutoSize = True
-        Me.lb_empresa_destino.Location = New System.Drawing.Point(17, 78)
-        Me.lb_empresa_destino.Name = "lb_empresa_destino"
-        Me.lb_empresa_destino.Size = New System.Drawing.Size(132, 20)
-        Me.lb_empresa_destino.TabIndex = 1
-        Me.lb_empresa_destino.Text = "Empresa Destino"
+        Me.tbconcepto.Location = New System.Drawing.Point(216, 216)
+        Me.tbconcepto.Name = "tbconcepto"
+        Me.tbconcepto.Size = New System.Drawing.Size(211, 26)
+        Me.tbconcepto.TabIndex = 12
         '
-        'lb_cuenta_destino
+        'tbcantidad
         '
-        Me.lb_cuenta_destino.AutoSize = True
-        Me.lb_cuenta_destino.Location = New System.Drawing.Point(17, 114)
-        Me.lb_cuenta_destino.Name = "lb_cuenta_destino"
-        Me.lb_cuenta_destino.Size = New System.Drawing.Size(120, 20)
-        Me.lb_cuenta_destino.TabIndex = 2
-        Me.lb_cuenta_destino.Text = "Cuenta Destino"
+        Me.tbcantidad.Location = New System.Drawing.Point(216, 181)
+        Me.tbcantidad.Name = "tbcantidad"
+        Me.tbcantidad.Size = New System.Drawing.Size(211, 26)
+        Me.tbcantidad.TabIndex = 11
         '
-        'lb_remitente
+        'tbremitente
         '
-        Me.lb_remitente.AutoSize = True
-        Me.lb_remitente.Location = New System.Drawing.Point(17, 150)
-        Me.lb_remitente.Name = "lb_remitente"
-        Me.lb_remitente.Size = New System.Drawing.Size(83, 20)
-        Me.lb_remitente.TabIndex = 3
-        Me.lb_remitente.Text = "Remitente"
+        Me.tbremitente.Location = New System.Drawing.Point(216, 149)
+        Me.tbremitente.Name = "tbremitente"
+        Me.tbremitente.Size = New System.Drawing.Size(211, 26)
+        Me.tbremitente.TabIndex = 10
         '
-        'lb_cantidad
+        'cbcuentadestino
         '
-        Me.lb_cantidad.AutoSize = True
-        Me.lb_cantidad.Location = New System.Drawing.Point(17, 186)
-        Me.lb_cantidad.Name = "lb_cantidad"
-        Me.lb_cantidad.Size = New System.Drawing.Size(73, 20)
-        Me.lb_cantidad.TabIndex = 4
-        Me.lb_cantidad.Text = "Cantidad"
+        Me.cbcuentadestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbcuentadestino.FormattingEnabled = True
+        Me.cbcuentadestino.Location = New System.Drawing.Point(216, 106)
+        Me.cbcuentadestino.Name = "cbcuentadestino"
+        Me.cbcuentadestino.Size = New System.Drawing.Size(211, 28)
+        Me.cbcuentadestino.TabIndex = 9
         '
-        'lb_concepto
+        'cbempresadestino
         '
-        Me.lb_concepto.AutoSize = True
-        Me.lb_concepto.Location = New System.Drawing.Point(17, 222)
-        Me.lb_concepto.Name = "lb_concepto"
-        Me.lb_concepto.Size = New System.Drawing.Size(78, 20)
-        Me.lb_concepto.TabIndex = 5
-        Me.lb_concepto.Text = "Concepto"
+        Me.cbempresadestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbempresadestino.FormattingEnabled = True
+        Me.cbempresadestino.Location = New System.Drawing.Point(216, 70)
+        Me.cbempresadestino.Name = "cbempresadestino"
+        Me.cbempresadestino.Size = New System.Drawing.Size(211, 28)
+        Me.cbempresadestino.TabIndex = 8
+        '
+        'cbcuantaorigen
+        '
+        Me.cbcuantaorigen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbcuantaorigen.FormattingEnabled = True
+        Me.cbcuantaorigen.Location = New System.Drawing.Point(216, 34)
+        Me.cbcuantaorigen.Name = "cbcuantaorigen"
+        Me.cbcuantaorigen.Size = New System.Drawing.Size(211, 28)
+        Me.cbcuantaorigen.TabIndex = 7
         '
         'Label1
         '
@@ -140,11 +156,75 @@ Partial Class Transferencias
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Concepto Extendido"
         '
+        'lb_concepto
+        '
+        Me.lb_concepto.AutoSize = True
+        Me.lb_concepto.Location = New System.Drawing.Point(17, 222)
+        Me.lb_concepto.Name = "lb_concepto"
+        Me.lb_concepto.Size = New System.Drawing.Size(78, 20)
+        Me.lb_concepto.TabIndex = 5
+        Me.lb_concepto.Text = "Concepto"
+        '
+        'lb_cantidad
+        '
+        Me.lb_cantidad.AutoSize = True
+        Me.lb_cantidad.Location = New System.Drawing.Point(17, 186)
+        Me.lb_cantidad.Name = "lb_cantidad"
+        Me.lb_cantidad.Size = New System.Drawing.Size(73, 20)
+        Me.lb_cantidad.TabIndex = 4
+        Me.lb_cantidad.Text = "Cantidad"
+        '
+        'lb_remitente
+        '
+        Me.lb_remitente.AutoSize = True
+        Me.lb_remitente.Location = New System.Drawing.Point(17, 150)
+        Me.lb_remitente.Name = "lb_remitente"
+        Me.lb_remitente.Size = New System.Drawing.Size(83, 20)
+        Me.lb_remitente.TabIndex = 3
+        Me.lb_remitente.Text = "Remitente"
+        '
+        'lb_cuenta_destino
+        '
+        Me.lb_cuenta_destino.AutoSize = True
+        Me.lb_cuenta_destino.Location = New System.Drawing.Point(17, 114)
+        Me.lb_cuenta_destino.Name = "lb_cuenta_destino"
+        Me.lb_cuenta_destino.Size = New System.Drawing.Size(120, 20)
+        Me.lb_cuenta_destino.TabIndex = 2
+        Me.lb_cuenta_destino.Text = "Cuenta Destino"
+        '
+        'lb_empresa_destino
+        '
+        Me.lb_empresa_destino.AutoSize = True
+        Me.lb_empresa_destino.Location = New System.Drawing.Point(17, 78)
+        Me.lb_empresa_destino.Name = "lb_empresa_destino"
+        Me.lb_empresa_destino.Size = New System.Drawing.Size(132, 20)
+        Me.lb_empresa_destino.TabIndex = 1
+        Me.lb_empresa_destino.Text = "Empresa Destino"
+        '
+        'lb_cuanta_origen
+        '
+        Me.lb_cuanta_origen.AutoSize = True
+        Me.lb_cuanta_origen.Location = New System.Drawing.Point(17, 42)
+        Me.lb_cuanta_origen.Name = "lb_cuanta_origen"
+        Me.lb_cuanta_origen.Size = New System.Drawing.Size(112, 20)
+        Me.lb_cuanta_origen.TabIndex = 0
+        Me.lb_cuanta_origen.Text = "Cuenta Origen"
+        '
+        'btn_
+        '
+        Me.btn_.Location = New System.Drawing.Point(534, 425)
+        Me.btn_.Name = "btn_"
+        Me.btn_.Size = New System.Drawing.Size(75, 23)
+        Me.btn_.TabIndex = 4
+        Me.btn_.Text = "Realizar"
+        Me.btn_.UseVisualStyleBackColor = True
+        '
         'Transferencias
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(621, 452)
+        Me.Controls.Add(Me.btn_)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.pan_header)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -169,4 +249,12 @@ Partial Class Transferencias
     Friend WithEvents lb_cuenta_destino As Label
     Friend WithEvents lb_empresa_destino As Label
     Friend WithEvents lb_cuanta_origen As Label
+    Friend WithEvents tbconceptoextendido As TextBox
+    Friend WithEvents tbconcepto As TextBox
+    Friend WithEvents tbcantidad As TextBox
+    Friend WithEvents tbremitente As TextBox
+    Friend WithEvents cbcuentadestino As ComboBox
+    Friend WithEvents cbempresadestino As ComboBox
+    Friend WithEvents cbcuantaorigen As ComboBox
+    Friend WithEvents btn_ As Button
 End Class
