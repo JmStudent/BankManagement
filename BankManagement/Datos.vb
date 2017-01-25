@@ -48,5 +48,20 @@ Public Class Datos
         Dim adap As New MySqlDataAdapter(cons, conex)
         desconectar(conex)
     End Sub
+    Public Function rellenartabla(consulta As String)
+        Dim Mysqladapter As New MySqlDataAdapter
+        Dim sqlcommand As New MySqlCommand
+        Dim Table As New DataTable
+        Dim i As Integer
+        With sqlcommand
+            .CommandText = consulta
+            .Connection = conectar()
+        End With
+        With Mysqladapter
+            .SelectCommand = sqlcommand
+            .Fill(Table)
+        End With
+        Return Table
+    End Function
 End Class
 

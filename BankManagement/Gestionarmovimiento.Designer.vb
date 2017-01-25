@@ -25,12 +25,12 @@ Partial Class Gestionarmovimiento
     Private Sub InitializeComponent()
         Me.Panelencabezado = New System.Windows.Forms.Panel()
         Me.gridviewgestionmov = New System.Windows.Forms.Panel()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Referencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaValor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Salod = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lista1 = New System.Windows.Forms.ListView()
+        Me.Referencia = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Fecha = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.FechaValor = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Importe = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Saldo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.panelbusqueda = New System.Windows.Forms.Panel()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.cbnombreempresa = New System.Windows.Forms.ComboBox()
@@ -38,7 +38,6 @@ Partial Class Gestionarmovimiento
         Me.labelcuentaempresa = New System.Windows.Forms.Label()
         Me.Labelnomempresa = New System.Windows.Forms.Label()
         Me.gridviewgestionmov.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelbusqueda.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -55,7 +54,7 @@ Partial Class Gestionarmovimiento
         '
         Me.gridviewgestionmov.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.gridviewgestionmov.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.gridviewgestionmov.Controls.Add(Me.DataGridView1)
+        Me.gridviewgestionmov.Controls.Add(Me.lista1)
         Me.gridviewgestionmov.Controls.Add(Me.panelbusqueda)
         Me.gridviewgestionmov.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.4!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gridviewgestionmov.Location = New System.Drawing.Point(0, 94)
@@ -64,47 +63,40 @@ Partial Class Gestionarmovimiento
         Me.gridviewgestionmov.Size = New System.Drawing.Size(1536, 767)
         Me.gridviewgestionmov.TabIndex = 1
         '
-        'DataGridView1
+        'lista1
         '
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Referencia, Me.Fecha, Me.FechaValor, Me.Importe, Me.Salod})
-        Me.DataGridView1.GridColor = System.Drawing.SystemColors.AppWorkspace
-        Me.DataGridView1.Location = New System.Drawing.Point(11, 370)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1509, 365)
-        Me.DataGridView1.TabIndex = 1
+        Me.lista1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Referencia, Me.Fecha, Me.FechaValor, Me.Importe, Me.Saldo})
+        Me.lista1.Location = New System.Drawing.Point(11, 381)
+        Me.lista1.Name = "lista1"
+        Me.lista1.Size = New System.Drawing.Size(1509, 365)
+        Me.lista1.TabIndex = 2
+        Me.lista1.UseCompatibleStateImageBehavior = False
+        Me.lista1.View = System.Windows.Forms.View.Details
         '
         'Referencia
         '
-        Me.Referencia.HeaderText = "Referencia"
-        Me.Referencia.Name = "Referencia"
-        Me.Referencia.Width = 250
+        Me.Referencia.Text = "Referencia"
+        Me.Referencia.Width = 235
         '
         'Fecha
         '
-        Me.Fecha.HeaderText = "Fecha"
-        Me.Fecha.Name = "Fecha"
-        Me.Fecha.Width = 200
+        Me.Fecha.Text = "Fecha"
+        Me.Fecha.Width = 225
         '
         'FechaValor
         '
-        Me.FechaValor.HeaderText = "Fechavalor"
-        Me.FechaValor.Name = "FechaValor"
-        Me.FechaValor.Width = 200
+        Me.FechaValor.Text = "FechaValor"
+        Me.FechaValor.Width = 220
         '
         'Importe
         '
-        Me.Importe.HeaderText = "Importe"
-        Me.Importe.Name = "Importe"
-        Me.Importe.Width = 220
+        Me.Importe.Text = "Importe"
+        Me.Importe.Width = 225
         '
-        'Salod
+        'Saldo
         '
-        Me.Salod.HeaderText = "Saldo"
-        Me.Salod.Name = "Salod"
-        Me.Salod.Width = 218
+        Me.Saldo.Text = "Saldo"
+        Me.Saldo.Width = 225
         '
         'panelbusqueda
         '
@@ -189,7 +181,6 @@ Partial Class Gestionarmovimiento
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Gestionarmovimiento"
         Me.gridviewgestionmov.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelbusqueda.ResumeLayout(False)
         Me.panelbusqueda.PerformLayout()
         Me.ResumeLayout(False)
@@ -204,22 +195,32 @@ Partial Class Gestionarmovimiento
     Friend WithEvents botonseleccionar As Button
     Friend WithEvents cbnombreempresa As ComboBox
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Referencia As DataGridViewTextBoxColumn
-    Friend WithEvents Fecha As DataGridViewTextBoxColumn
-    Friend WithEvents FechaValor As DataGridViewTextBoxColumn
-    Friend WithEvents Importe As DataGridViewTextBoxColumn
-    Friend WithEvents Salod As DataGridViewTextBoxColumn
 
     Dim ad As New Datos
     Private Sub botonseleccionar_Click(sender As Object, e As EventArgs) Handles botonseleccionar.Click
         Dim consulta As String
-        Dim dsconsulta As DataSet
-
+        Dim tab As DataTable
+        Dim i As Integer
+        MsgBox(cbnombreempresa.Text)
         If cbnombreempresa.SelectedItem Is Nothing Or ComboBox1.SelectedItem Is Nothing Then
+            lista1.Items.Clear()
             MsgBox("Campos vacíos")
         Else
-            consulta = "SELECT * FROM operaciones WHERE "
+            lista1.Items.Clear()
+            consulta = "SELECT * FROM operaciones WHERE codigo IN(SELECT cod_op FROM cc_op WHERE cc in (SELECT CC FROM cuentas WHERE CC=" & ComboBox1.Text & "))"
+            tab = ad.rellenartabla(consulta)
+            For i = 0 To tab.Rows.Count - 1
+                With lista1
+                    .Items.Add(tab.Rows(i)("referencias"))
+                    With .Items(.Items.Count - 1).SubItems
+                        .Add(tab.Rows(i)("fecha"))
+                        .Add(tab.Rows(i)("fecha_valor"))
+                        .Add(tab.Rows(i)("cantidad"))
+                        .Add(tab.Rows(i)("saldo"))
+                    End With
+                End With
+            Next
+            MsgBox("exito")
         End If
     End Sub
 
@@ -240,7 +241,7 @@ Partial Class Gestionarmovimiento
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
 
     End Sub
 
@@ -260,4 +261,15 @@ Partial Class Gestionarmovimiento
         ComboBox1.SelectedIndex = -1
 
     End Sub
+
+    Private Sub gridviewgestionmov_Paint(sender As Object, e As PaintEventArgs) Handles gridviewgestionmov.Paint
+
+    End Sub
+
+    Friend WithEvents lista1 As ListView
+    Friend WithEvents Referencia As ColumnHeader
+    Friend WithEvents Fecha As ColumnHeader
+    Friend WithEvents FechaValor As ColumnHeader
+    Friend WithEvents Importe As ColumnHeader
+    Friend WithEvents Saldo As ColumnHeader
 End Class
