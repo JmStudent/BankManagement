@@ -150,6 +150,7 @@ Partial Class GestionarTransferencia
         '
         Me.txtConEx.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtConEx.Location = New System.Drawing.Point(867, 514)
+        Me.txtConEx.MaxLength = 100
         Me.txtConEx.Multiline = True
         Me.txtConEx.Name = "txtConEx"
         Me.txtConEx.Size = New System.Drawing.Size(605, 134)
@@ -269,6 +270,7 @@ Partial Class GestionarTransferencia
         '
         Me.txtRem.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRem.Location = New System.Drawing.Point(431, 478)
+        Me.txtRem.MaxLength = 50
         Me.txtRem.Name = "txtRem"
         Me.txtRem.Size = New System.Drawing.Size(310, 37)
         Me.txtRem.TabIndex = 10
@@ -421,7 +423,7 @@ Partial Class GestionarTransferencia
         Me.pbRefresh.TabIndex = 0
         Me.pbRefresh.TabStop = False
         '
-        'epCuentas
+        'epCD
         '
         Me.epCD.ContainerControl = Me
         '
