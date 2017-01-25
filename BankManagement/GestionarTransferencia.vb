@@ -145,20 +145,21 @@
                     ' este es el numero de referencia de origen
                     Dim refOrigen As String = dtpDate.Text.Substring(0, 2) & dtpDate.Text.Substring(3, 2) & dtpDate.Text.Substring(8) & subsEOr & subsEDe & conceptSelOri
                     Dim refDestino As String = dtpDate.Text.Substring(0, 2) & dtpDate.Text.Substring(3, 2) & dtpDate.Text.Substring(8) & subsEOr & subsEDe & conceptSelDes
-                    MsgBox(refOrigen)
-                    MsgBox(refDestino)
-                    ' realizar un dialog1.show()
+                    'MsgBox(refOrigen)
+                    'MsgBox(refDestino)
+                    Waiting.Show()
                     'Try
 
                     ' INSERT operaciones ORIGEN
                     Dim saldo As Integer
+                    Dim hoy As String = String.Format("{0:dd/MM/yyyy}", DateTime.Now)
                     query = "SELECT Saldo FROM cuentas WHERE CC = '" & cbCO.Text & "'"
                     ds = ad.query(query)
                         If ds.Tables(0).Rows.Count > 0 Then
                             saldo = ds.Tables(0).Rows.Item(0).Item(0)
                         End If
-                        '(codigo, tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica)
-                        Dim queryOrigen As String = "INSERT INTO operaciones VALUES(0, '" & conceptSelOri & "', '" & refOrigen & "', '" & txtRem.Text & "', '" & dtpDate.Text & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & saldo & ", " & cbPer.Text & ")"
+                    '(codigo, tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica)
+                    Dim queryOrigen As String = "INSERT INTO operaciones VALUES(2, '" & conceptSelOri & "', '" & refOrigen & "', '" & txtRem.Text & "', '" & hoy & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & saldo & ", " & cbPer.Text & ")"
                     ad.cud(queryOrigen)
 
                     ' INSERT operaciones DESTINO
@@ -167,16 +168,15 @@
                     If ds.Tables(0).Rows.Count > 0 Then
                         saldo = ds.Tables(0).Rows.Item(0).Item(0)
                     End If
-                    Dim queryDestino As String = "INSERT operaciones
-                    (codigo, tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica) 
-                    VALUES 
-                    (0, 'NorthWestern')"
+                    Dim queryDestino As String = "INSERT INTO operaciones VALUES(2, '" & conceptSelDes & "', '" & refDestino & "', '" & txtRem.Text & "', '" & hoy & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & saldo & ", " & cbPer.Text & ")"
                     ad.cud(queryDestino)
+                    ''''''''''''''''''' ATENCION '''''''''''''''''''' 
+                    ' SI EL CAMPO CÓDIGO DE LA TABLA OPERACIONES ES EL MISMO QUE EL QUE HAY EN LA BBDD NO DA FALLO, PERO NO INSERTA EL REGISTRO.
                     'Catch ex As Exception
-                    '    ' poner también aquí que se cierre la ventana
+                    '    Waiting.Close()
                     '    MessageBox.Show("No ha podido realizarse la transferencia por problemas con la base de datos", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     'End Try
-                    ' al final cerrar la ventana de "realizando transferencia"
+                    Waiting.Close()
                     MessageBox.Show("La transferencia se ha realizado con éxito", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             End If
