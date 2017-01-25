@@ -44,16 +44,55 @@
     End Sub
 
     Private Sub transfe()
-        Dim query, referencia, x As String
-        Dim ds As DataSet
+        Dim query, querySaldoOrigen, querySaldoDestino, updateorigen, updatedestino, referencia As String
+        Dim ds As New DataSet
         Dim tmo As Integer = cbcuantaorigen.Text.Length
         Dim tmd As Integer = cbcuentadestino.Text.Length
+        Dim cantidad As Integer = tbcantidad.Text
+        Dim cantidad2 As Integer
         referencia = Date.Today.ToString.Substring(0, 2) & Date.Today.ToString.Substring(3, 2) & Date.Today.ToString.Substring(8, 2) & cbcuantaorigen.Text.Substring((tmo - 3), 3) & cbcuentadestino.Text.Substring((tmd - 3), 3)
 
-        query = "INSERT INTO operaciones VALUES (1,ABONO,'" & referencia & "','" & tbremitente.Text & ",'" & Date.Today.ToString & "','" & Date.Today.ToString & "','" & tbconcepto.Text & "','" & tbconceptoextendido.Text & "',)"
+        querySaldoOrigen = "SELECT saldo FROM cuentas where CC= '" & cbcuantaorigen.Text & "' "
+        ds = ad.query(querySaldoOrigen)
+        Dim saldoorigen As Integer = ds.Tables(0).Rows(0).Item(0).ToString()
+
+        querySaldoDestino = "SELECT saldo FROM cuentas where CC= '" & cbcuentadestino.Text & "' "
+        ds = ad.query(querySaldoDestino)
+        Dim saldodestino As Integer = ds.Tables(0).Rows(0).Item(0).ToString()
+
+
+        cantidad = saldoorigen - cantidad
+        MsgBox(cantidad)
+        updateorigen = "UPDATE cuentas SET saldo=" & cantidad & " where CC='" & cbcuantaorigen.Text & "' "
+
+
+
+        cantidad2 = saldodestino + cantidad
+        MsgBox(cantidad2)
+        updatedestino = "UPDATE cuentas SET saldo=" & cantidad2 & " where CC='" & cbcuentadestino.Text & "' "
+        ds = ad.query(updatedestino)
+
+
+        query = "INSERT INTO operaciones VALUES (2,'ABONO','" & referencia & "','" & tbremitente.Text & "','" & Date.Today.ToString.Substring(0, 10) & "','" & Date.Today.ToString.Substring(0, 10) & "','" & tbconcepto.Text & "','" & tbconceptoextendido.Text & "', " & CInt(tbcantidad.Text) & "," & cantidad & ",'no')"
+        ds = ad.query(query)
+
     End Sub
 
     Private Sub btn__Click(sender As Object, e As EventArgs) Handles btn_.Click
         transfe()
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Dim res As Integer
+
+        res = MessageBox.Show("¿Está seguro que desea salir?", "Salida", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        If res = 6 Then
+            Application.Exit()
+        End If
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        Gestion.Show()
+        Me.Close()
     End Sub
 End Class

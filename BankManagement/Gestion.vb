@@ -43,12 +43,26 @@
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
-        Base.Show()
+        Transferencias.Show()
         Me.Close()
     End Sub
 
     Private Sub pan_body_Paint(sender As Object, e As PaintEventArgs) Handles pan_body.Paint
 
+    End Sub
+
+    Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
+        Dim res As Integer
+
+        res = MessageBox.Show("¿Está seguro que desea salir?", "Salida", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        If res = 6 Then
+            Application.Exit()
+        End If
+    End Sub
+
+    Private Sub PictureBox5_Click(sender As Object, e As EventArgs) Handles PictureBox5.Click
+        'Login.Show()
+        'Me.Close()
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click

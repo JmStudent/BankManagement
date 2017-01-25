@@ -23,7 +23,6 @@ Partial Class Transferencias
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.pan_header = New System.Windows.Forms.Panel()
-        Me.lb_header = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.tbconceptoextendido = New System.Windows.Forms.TextBox()
         Me.tbconcepto = New System.Windows.Forms.TextBox()
@@ -40,33 +39,26 @@ Partial Class Transferencias
         Me.lb_empresa_destino = New System.Windows.Forms.Label()
         Me.lb_cuanta_origen = New System.Windows.Forms.Label()
         Me.btn_ = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.pan_header.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pan_header
         '
         Me.pan_header.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(104, Byte), Integer), CType(CType(176, Byte), Integer))
-        Me.pan_header.Controls.Add(Me.lb_header)
+        Me.pan_header.Controls.Add(Me.PictureBox3)
+        Me.pan_header.Controls.Add(Me.PictureBox1)
         Me.pan_header.Dock = System.Windows.Forms.DockStyle.Top
         Me.pan_header.Location = New System.Drawing.Point(0, 0)
         Me.pan_header.Name = "pan_header"
         Me.pan_header.Size = New System.Drawing.Size(621, 75)
         Me.pan_header.TabIndex = 2
-        '
-        'lb_header
-        '
-        Me.lb_header.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lb_header.AutoSize = True
-        Me.lb_header.Enabled = False
-        Me.lb_header.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_header.ForeColor = System.Drawing.Color.White
-        Me.lb_header.Location = New System.Drawing.Point(89, 19)
-        Me.lb_header.Name = "lb_header"
-        Me.lb_header.Size = New System.Drawing.Size(417, 39)
-        Me.lb_header.TabIndex = 0
-        Me.lb_header.Text = "Banca Online 'Salesianos'"
-        Me.lb_header.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'GroupBox1
         '
@@ -219,11 +211,44 @@ Partial Class Transferencias
         Me.btn_.Text = "Realizar"
         Me.btn_.UseVisualStyleBackColor = True
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBox2.Image = Global.BankManagement.My.Resources.Resources.backv2
+        Me.PictureBox2.Location = New System.Drawing.Point(0, 81)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(60, 50)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 5
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.Image = Global.BankManagement.My.Resources.Resources.logov3
+        Me.PictureBox3.Location = New System.Drawing.Point(117, 12)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(396, 50)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox3.TabIndex = 2
+        Me.PictureBox3.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBox1.Image = Global.BankManagement.My.Resources.Resources.closeIconv3
+        Me.PictureBox1.Location = New System.Drawing.Point(576, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(45, 40)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.TabStop = False
+        '
         'Transferencias
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(621, 452)
+        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.btn_)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.pan_header)
@@ -232,15 +257,16 @@ Partial Class Transferencias
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Transferencias"
         Me.pan_header.ResumeLayout(False)
-        Me.pan_header.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents pan_header As Panel
-    Friend WithEvents lb_header As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label1 As Label
     Friend WithEvents lb_concepto As Label
@@ -257,4 +283,7 @@ Partial Class Transferencias
     Friend WithEvents cbempresadestino As ComboBox
     Friend WithEvents cbcuantaorigen As ComboBox
     Friend WithEvents btn_ As Button
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
 End Class
