@@ -251,6 +251,7 @@ Partial Class GestionarTransferencia
         '
         Me.txtCant.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCant.Location = New System.Drawing.Point(431, 578)
+        Me.txtCant.MaxLength = 15
         Me.txtCant.Name = "txtCant"
         Me.txtCant.Size = New System.Drawing.Size(310, 37)
         Me.txtCant.TabIndex = 12
