@@ -79,15 +79,21 @@
     End Sub
 
     Private Sub pbRefresh_Click(sender As Object, e As EventArgs) Handles pbRefresh.Click
-        cbEO.ResetText()
-        cbCO.ResetText()
-        cbED.ResetText()
-        cbCD.ResetText()
+        MsgBox("Empresa origen" & cbEO.Text)
+        MsgBox("Cuenta origen" & cbCO.Text)
+        MsgBox("Empresa Destino" & cbED.Text)
+        MsgBox("Cuenta destino" & cbCD.Text)
+        MsgBox("Periodiciad" & cbPer.Text)
+        MsgBox("concepto" & cbConcepto.Text)
+        'cbEO.ResetText()
+        'cbCO.ResetText()
+        'cbED.ResetText()
+        'cbCD.ResetText()
         txtRem.Text = ""
         txtCant.Text = ""
-        cbPer.ResetText()
+        'cbPer.ResetText()
         dtpDate.ResetText()
-        cbConcepto.ResetText()
+        'cbConcepto.ResetText()
         chbDom.Checked = False
         txtConEx.Text = ""
         epCD.Clear()
@@ -128,87 +134,98 @@
 
     Private Sub pbMake_Click(sender As Object, e As EventArgs) Handles pbMake.Click
         Dim returned As Integer
-        If chbDom.Checked Then
-            returned = MessageBox.Show("¿Está seguro que desea realizar la transferencia MASIVA?", "Transferencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If returned = 6 Then
-                'cobrarle a todas las cuentas la cantidad, lo que quiere decir 2 insert y 1 update por cada cuenta.
-            End If
-        Else
-            returned = MessageBox.Show("¿Está seguro que desea realizar la transferencia?", "Transferencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If returned = 6 Then
-                If cbCO.Text = cbCD.Text Then
-                    MessageBox.Show("La transferencia no se ha realizado porque la cuenta de destino no puede ser la misma que la cuenta de origen", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Stop)
-                    epCD.SetError(cbCD, "Cambie la cuenta de destino o de origen")
-                Else
-                    ' aquí debe ir el código para una transferencia normal de un sitio a otro
+        If not_Error() Then
 
-                    ' este es el numero de referencia de origen
-                    Dim refOrigen As String = dtpDate.Text.Substring(0, 2) & dtpDate.Text.Substring(3, 2) & dtpDate.Text.Substring(8) & subsEOr & subsEDe & conceptSelOri
-                    Dim refDestino As String = dtpDate.Text.Substring(0, 2) & dtpDate.Text.Substring(3, 2) & dtpDate.Text.Substring(8) & subsEOr & subsEDe & conceptSelDes
-                    'MsgBox(refOrigen)
-                    'MsgBox(refDestino)
-                    'Waiting.Show()
-                    'Threading.Thread.Sleep(3000)
-                    Try
 
-                        ''''''''''''''''''''''' ORIGEN ''''''''''''''''''''''''
-                        Dim saldo As Integer
-                        Dim hoy As String = String.Format("{0:dd/MM/yyyy}", DateTime.Now)
-                        query = "SELECT Saldo FROM cuentas WHERE CC = '" & cbCO.Text & "'"
-                        ds = ad.query(query)
-                        If ds.Tables(0).Rows.Count > 0 Then
-                            saldo = ds.Tables(0).Rows.Item(0).Item(0)
-                        End If
-                        If conceptSelOri = "A" Then
-                            saldo = saldo + CInt(txtCant.Text)
-                        Else
-                            saldo = saldo - CInt(txtCant.Text)
-                        End If
+            If chbDom.Checked Then
+                returned = MessageBox.Show("¿Está seguro que desea realizar la transferencia MASIVA?", "Transferencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If returned = 6 Then
+                    'cobrarle a todas las cuentas la cantidad, lo que quiere decir 2 insert y 1 update por cada cuenta.
+                End If
+            Else
+                returned = MessageBox.Show("¿Está seguro que desea realizar la transferencia?", "Transferencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If returned = 6 Then
+                    If cbCO.Text = cbCD.Text Then
+                        MessageBox.Show("La transferencia no se ha realizado porque la cuenta de destino no puede ser la misma que la cuenta de origen", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                        epCD.SetError(cbCD, "Cambie la cuenta de destino o de origen")
+                    Else
+                        ' aquí debe ir el código para una transferencia normal de un sitio a otro
 
-                        'UPDATE cuentas ORIGEN
-                        Dim queryOrigen As String = "UPDATE cuentas SET Saldo = " & saldo & " WHERE CC = '" & cbCO.Text & "'"
-                        ad.cud(queryOrigen)
-                        ' INSERT operaciones ORIGEN
-                        queryOrigen = "INSERT INTO operaciones (tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica) VALUES('" & conceptSelOri & "', '" & refOrigen & "', '" & txtRem.Text & "', '" & hoy & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & saldo & ", " & cbPer.Text & ")"
-                        ad.cud(queryOrigen)
-                        'INSERT cc_op ORIGEN
-                        Dim querycc_opOrigen As String = "INSERT INTO cc_op (SELECT LAST_INSERT_ID(), '" & cbCO.Text & "', '" & conceptSelOri & "', " & saldo & ")"
-                        ad.cud(querycc_opOrigen)
+                        ' este es el numero de referencia de origen
+                        Dim refOrigen As String = dtpDate.Text.Substring(0, 2) & dtpDate.Text.Substring(3, 2) & dtpDate.Text.Substring(8) & subsEOr & subsEDe & conceptSelOri
+                        Dim refDestino As String = dtpDate.Text.Substring(0, 2) & dtpDate.Text.Substring(3, 2) & dtpDate.Text.Substring(8) & subsEOr & subsEDe & conceptSelDes
+                        'MsgBox(refOrigen)
+                        'MsgBox(refDestino)
+                        'Waiting.Show()
+                        'Threading.Thread.Sleep(3000)
+                        Try
 
-                        ''''''''''''''''''''''' DESTINO ''''''''''''''''''''''''
-                        query = "SELECT Saldo FROM cuentas WHERE CC = '" & cbCD.Text & "'"
-                        ds = ad.query(query)
-                        If ds.Tables(0).Rows.Count > 0 Then
-                            saldo = ds.Tables(0).Rows.Item(0).Item(0)
-                        End If
-                        If conceptSelDes = "A" Then
-                            saldo = saldo + CInt(txtCant.Text)
-                        Else
-                            saldo = saldo - CInt(txtCant.Text)
-                        End If
+                            ''''''''''''''''''''''' ORIGEN ''''''''''''''''''''''''
+                            Dim saldo As Integer
+                            Dim hoy As String = String.Format("{0:dd/MM/yyyy}", DateTime.Now)
+                            query = "SELECT Saldo FROM cuentas WHERE CC = '" & cbCO.Text & "'"
+                            ds = ad.query(query)
+                            If ds.Tables(0).Rows.Count > 0 Then
+                                saldo = ds.Tables(0).Rows.Item(0).Item(0)
+                            End If
+                            If conceptSelOri = "A" Then
+                                saldo = saldo + CInt(txtCant.Text)
+                            Else
+                                saldo = saldo - CInt(txtCant.Text)
+                            End If
 
-                        'UPDATE cuentas DESTINO
-                        queryOrigen = "UPDATE cuentas SET Saldo = " & saldo & " WHERE CC = '" & cbCD.Text & "'"
-                        ad.cud(queryOrigen)
-                        ' INSERT operaciones DESTINO
-                        Dim queryDestino As String = "INSERT INTO operaciones (tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica) VALUES('" & conceptSelDes & "', '" & refDestino & "', '" & txtRem.Text & "', '" & hoy & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & saldo & ", " & cbPer.Text & ")"
-                        ad.cud(queryDestino)
-                        'INSERT cc_op ORIGEN
-                        Dim querycc_opDestino As String = "INSERT INTO cc_op (SELECT LAST_INSERT_ID(), '" & cbCD.Text & "', '" & conceptSelDes & "', " & saldo & ")"
-                        ad.cud(querycc_opDestino)
+                            'UPDATE cuentas ORIGEN
+                            Dim queryOrigen As String = "UPDATE cuentas SET Saldo = " & saldo & " WHERE CC = '" & cbCO.Text & "'"
+                            ad.cud(queryOrigen)
+                            ' INSERT operaciones ORIGEN
+                            queryOrigen = "INSERT INTO operaciones (tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica) VALUES('" & conceptSelOri & "', '" & refOrigen & "', '" & txtRem.Text & "', '" & hoy & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & saldo & ", " & cbPer.Text & ")"
+                            ad.cud(queryOrigen)
+                            'INSERT cc_op ORIGEN
+                            Dim querycc_opOrigen As String = "INSERT INTO cc_op (SELECT LAST_INSERT_ID(), '" & cbCO.Text & "', '" & conceptSelOri & "', " & saldo & ")"
+                            ad.cud(querycc_opOrigen)
 
-                        ''''''''''''''''''' ATENCION '''''''''''''''''''' 
-                        ' SI EL CAMPO CÓDIGO DE LA TABLA OPERACIONES ES EL MISMO QUE EL QUE HAY EN LA BBDD NO DA FALLO, PERO NO INSERTA EL REGISTRO.
-                    Catch ex As Exception
-                        '    Waiting.Close()
-                        '    MessageBox.Show("No ha podido realizarse la transferencia por problemas con la base de datos", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    End Try
-                    'Waiting.Close()
-                    MessageBox.Show("La transferencia se ha realizado con éxito", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            ''''''''''''''''''''''' DESTINO ''''''''''''''''''''''''
+                            query = "SELECT Saldo FROM cuentas WHERE CC = '" & cbCD.Text & "'"
+                            ds = ad.query(query)
+                            If ds.Tables(0).Rows.Count > 0 Then
+                                saldo = ds.Tables(0).Rows.Item(0).Item(0)
+                            End If
+                            If conceptSelDes = "A" Then
+                                saldo = saldo + CInt(txtCant.Text)
+                            Else
+                                saldo = saldo - CInt(txtCant.Text)
+                            End If
+
+                            'UPDATE cuentas DESTINO
+                            queryOrigen = "UPDATE cuentas SET Saldo = " & saldo & " WHERE CC = '" & cbCD.Text & "'"
+                            ad.cud(queryOrigen)
+                            ' INSERT operaciones DESTINO
+                            Dim queryDestino As String = "INSERT INTO operaciones (tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica) VALUES('" & conceptSelDes & "', '" & refDestino & "', '" & txtRem.Text & "', '" & hoy & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & saldo & ", " & cbPer.Text & ")"
+                            ad.cud(queryDestino)
+                            'INSERT cc_op ORIGEN
+                            Dim querycc_opDestino As String = "INSERT INTO cc_op (SELECT LAST_INSERT_ID(), '" & cbCD.Text & "', '" & conceptSelDes & "', " & saldo & ")"
+                            ad.cud(querycc_opDestino)
+
+                            ''''''''''''''''''' ATENCION '''''''''''''''''''' 
+                            ' SI EL CAMPO CÓDIGO DE LA TABLA OPERACIONES ES EL MISMO QUE EL QUE HAY EN LA BBDD NO DA FALLO, PERO NO INSERTA EL REGISTRO.
+                        Catch ex As Exception
+                            '    Waiting.Close()
+                            '    MessageBox.Show("No ha podido realizarse la transferencia por problemas con la base de datos", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        End Try
+                        'Waiting.Close()
+                        MessageBox.Show("La transferencia se ha realizado con éxito", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
                 End If
             End If
+        Else
+            MessageBox.Show("No se ha podido realizar la transferencia", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
+    Private Function not_Error() As Boolean
+        Dim passed As Boolean = False
+
+        Return passed
+    End Function
 
     Private Sub cbCD_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCD.SelectedIndexChanged
         epCD.Clear()

@@ -190,6 +190,7 @@ Partial Class GestionarTransferencia
         '
         'cbConcepto
         '
+        Me.cbConcepto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbConcepto.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbConcepto.FormattingEnabled = True
         Me.cbConcepto.Location = New System.Drawing.Point(1162, 280)
@@ -229,6 +230,7 @@ Partial Class GestionarTransferencia
         '
         'cbPer
         '
+        Me.cbPer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbPer.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPer.FormattingEnabled = True
         Me.cbPer.Location = New System.Drawing.Point(1162, 78)
@@ -289,6 +291,7 @@ Partial Class GestionarTransferencia
         '
         'cbCD
         '
+        Me.cbCD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbCD.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCD.FormattingEnabled = True
         Me.cbCD.Location = New System.Drawing.Point(431, 377)
@@ -309,6 +312,7 @@ Partial Class GestionarTransferencia
         '
         'cbED
         '
+        Me.cbED.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbED.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbED.FormattingEnabled = True
         Me.cbED.Location = New System.Drawing.Point(431, 276)
@@ -329,6 +333,7 @@ Partial Class GestionarTransferencia
         '
         'cbCO
         '
+        Me.cbCO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbCO.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCO.FormattingEnabled = True
         Me.cbCO.Location = New System.Drawing.Point(431, 175)
@@ -349,6 +354,7 @@ Partial Class GestionarTransferencia
         '
         'cbEO
         '
+        Me.cbEO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbEO.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbEO.FormattingEnabled = True
         Me.cbEO.Location = New System.Drawing.Point(431, 74)
