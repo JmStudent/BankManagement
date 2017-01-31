@@ -325,4 +325,20 @@
     Private Sub txtConEx_TextChanged(sender As Object, e As EventArgs) Handles txtConEx.TextChanged
         epConExt.Clear()
     End Sub
+
+    Private Sub chbDom_CheckedChanged(sender As Object, e As EventArgs) Handles chbDom.CheckedChanged
+        If chbDom.Checked Then
+            cbEO.Enabled = False
+            cbCO.Enabled = False
+            cbED.Enabled = False
+            cbCD.Enabled = False
+            cbConcepto.Enabled = False
+        Else
+            cbEO.Enabled = True
+            cbCO.Enabled = True
+            cbED.Enabled = True
+            cbCD.Enabled = True
+            cbConcepto.Enabled = True
+        End If
+    End Sub
 End Class
