@@ -56,6 +56,13 @@ Partial Class GestionarTransferencia
         Me.lblClean = New System.Windows.Forms.Label()
         Me.pbRefresh = New System.Windows.Forms.PictureBox()
         Me.epCD = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.epCO = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.epCD1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.epRem = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.epCantidad = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.epPer = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.epConcepto = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.epConExt = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.panHeader.SuspendLayout()
         CType(Me.pbBack, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbClose, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,6 +72,13 @@ Partial Class GestionarTransferencia
         CType(Me.pbMake, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbRefresh, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.epCD, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.epCO, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.epCD1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.epRem, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.epCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.epPer, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.epConcepto, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.epConExt, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panHeader
@@ -213,6 +227,7 @@ Partial Class GestionarTransferencia
         '
         Me.dtpDate.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold)
         Me.dtpDate.Location = New System.Drawing.Point(1162, 175)
+        Me.dtpDate.MinDate = New Date(2017, 1, 31, 0, 0, 0, 0)
         Me.dtpDate.Name = "dtpDate"
         Me.dtpDate.Size = New System.Drawing.Size(310, 37)
         Me.dtpDate.TabIndex = 16
@@ -434,6 +449,34 @@ Partial Class GestionarTransferencia
         '
         Me.epCD.ContainerControl = Me
         '
+        'epCO
+        '
+        Me.epCO.ContainerControl = Me
+        '
+        'epCD1
+        '
+        Me.epCD1.ContainerControl = Me
+        '
+        'epRem
+        '
+        Me.epRem.ContainerControl = Me
+        '
+        'epCantidad
+        '
+        Me.epCantidad.ContainerControl = Me
+        '
+        'epPer
+        '
+        Me.epPer.ContainerControl = Me
+        '
+        'epConcepto
+        '
+        Me.epConcepto.ContainerControl = Me
+        '
+        'epConExt
+        '
+        Me.epConExt.ContainerControl = Me
+        '
         'GestionarTransferencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -457,6 +500,13 @@ Partial Class GestionarTransferencia
         CType(Me.pbMake, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbRefresh, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.epCD, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.epCO, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.epCD1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.epRem, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.epCantidad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.epPer, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.epConcepto, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.epConExt, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -494,4 +544,11 @@ Partial Class GestionarTransferencia
     Friend WithEvents Label1 As Label
     Friend WithEvents pbMake As PictureBox
     Friend WithEvents epCD As ErrorProvider
+    Friend WithEvents epCO As ErrorProvider
+    Friend WithEvents epCD1 As ErrorProvider
+    Friend WithEvents epRem As ErrorProvider
+    Friend WithEvents epCantidad As ErrorProvider
+    Friend WithEvents epPer As ErrorProvider
+    Friend WithEvents epConcepto As ErrorProvider
+    Friend WithEvents epConExt As ErrorProvider
 End Class
