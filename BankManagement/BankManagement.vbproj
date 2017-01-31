@@ -90,6 +90,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GCuentas.Designer.vb">
+      <DependentUpon>GCuentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GCuentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Gestion.Designer.vb">
       <DependentUpon>Gestion.vb</DependentUpon>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GCuentas.resx">
+      <DependentUpon>GCuentas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gestion.resx">
       <DependentUpon>Gestion.vb</DependentUpon>
