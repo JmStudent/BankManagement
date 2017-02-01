@@ -23,6 +23,7 @@ Partial Class Transferencias
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.pan_header = New System.Windows.Forms.Panel()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -41,12 +42,11 @@ Partial Class Transferencias
         Me.lb_empresa_destino = New System.Windows.Forms.Label()
         Me.lb_cuanta_origen = New System.Windows.Forms.Label()
         Me.btn_ = New System.Windows.Forms.Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.pan_header.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pan_header
@@ -60,6 +60,17 @@ Partial Class Transferencias
         Me.pan_header.Name = "pan_header"
         Me.pan_header.Size = New System.Drawing.Size(621, 75)
         Me.pan_header.TabIndex = 2
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBox2.Image = Global.BankManagement.My.Resources.Resources.backv2
+        Me.PictureBox2.Location = New System.Drawing.Point(3, 12)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(60, 50)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 5
+        Me.PictureBox2.TabStop = False
         '
         'PictureBox3
         '
@@ -233,17 +244,6 @@ Partial Class Transferencias
         Me.btn_.Text = "Realizar"
         Me.btn_.UseVisualStyleBackColor = True
         '
-        'PictureBox2
-        '
-        Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox2.Image = Global.BankManagement.My.Resources.Resources.backv2
-        Me.PictureBox2.Location = New System.Drawing.Point(3, 12)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(60, 50)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 5
-        Me.PictureBox2.TabStop = False
-        '
         'Transferencias
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -257,11 +257,11 @@ Partial Class Transferencias
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Transferencias"
         Me.pan_header.ResumeLayout(False)
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
