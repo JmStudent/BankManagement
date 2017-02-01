@@ -17,4 +17,8 @@
             Application.Exit()
         End If
     End Sub
+
+    Private Sub GCuentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

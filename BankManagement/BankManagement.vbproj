@@ -82,6 +82,12 @@
     <Compile Include="admin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="borrar.Designer.vb">
+      <DependentUpon>borrar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="borrar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataAccess.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
@@ -133,6 +139,9 @@
   <ItemGroup>
     <EmbeddedResource Include="admin.resx">
       <DependentUpon>admin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="borrar.resx">
+      <DependentUpon>borrar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
