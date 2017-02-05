@@ -103,6 +103,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property cancel_button() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("cancel-button", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property closeIconv3() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("closeIconv3", resourceCulture)
@@ -136,6 +146,36 @@ Namespace My.Resources
         Friend ReadOnly Property padlock() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("padlock", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property pencil() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("pencil", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property pencil_1_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("pencil(1)", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property pencil1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("pencil1", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

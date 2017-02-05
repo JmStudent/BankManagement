@@ -86,9 +86,9 @@ Partial Class Transferencias
         '
         Me.PictureBox1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox1.Image = Global.BankManagement.My.Resources.Resources.closeIconv3
-        Me.PictureBox1.Location = New System.Drawing.Point(573, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(559, 12)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(45, 40)
+        Me.PictureBox1.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False

@@ -45,8 +45,33 @@
         Me.Close()
     End Sub
 
-    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
+    Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles PictureBox7.Click
+        Dim res As Integer
 
+        res = MessageBox.Show("¿Está seguro que desea salir?", "Salida", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        If res = 6 Then
+            Application.Exit()
+        End If
+    End Sub
+
+    Private Sub PictureBox8_Click(sender As Object, e As EventArgs) Handles PictureBox8.Click
+        'Login.Show()
+        'Me.Close()
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        'gestionMovimientos.Show()
+        'Me.Close()
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        'gestionTranferencia.Show()
+        'Me.Close()
+    End Sub
+
+    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
+        gestionEmpresa.Show()
+        Me.Close()
     End Sub
 
 End Class
