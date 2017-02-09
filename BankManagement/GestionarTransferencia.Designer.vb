@@ -60,9 +60,10 @@ Partial Class GestionarTransferencia
         Me.epCD1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.epRem = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.epCantidad = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.epPer = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.epConcepto = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.epConExt = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.epComa = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.espera = New System.Windows.Forms.Timer(Me.components)
         Me.panHeader.SuspendLayout()
         CType(Me.pbBack, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbClose, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,9 +77,9 @@ Partial Class GestionarTransferencia
         CType(Me.epCD1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.epRem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.epCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.epPer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.epConcepto, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.epConExt, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.epComa, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panHeader
@@ -465,10 +466,6 @@ Partial Class GestionarTransferencia
         '
         Me.epCantidad.ContainerControl = Me
         '
-        'epPer
-        '
-        Me.epPer.ContainerControl = Me
-        '
         'epConcepto
         '
         Me.epConcepto.ContainerControl = Me
@@ -476,6 +473,14 @@ Partial Class GestionarTransferencia
         'epConExt
         '
         Me.epConExt.ContainerControl = Me
+        '
+        'epComa
+        '
+        Me.epComa.ContainerControl = Me
+        '
+        'espera
+        '
+        Me.espera.Interval = 10
         '
         'GestionarTransferencia
         '
@@ -504,9 +509,9 @@ Partial Class GestionarTransferencia
         CType(Me.epCD1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.epRem, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.epCantidad, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.epPer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.epConcepto, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.epConExt, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.epComa, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -548,7 +553,8 @@ Partial Class GestionarTransferencia
     Friend WithEvents epCD1 As ErrorProvider
     Friend WithEvents epRem As ErrorProvider
     Friend WithEvents epCantidad As ErrorProvider
-    Friend WithEvents epPer As ErrorProvider
     Friend WithEvents epConcepto As ErrorProvider
     Friend WithEvents epConExt As ErrorProvider
+    Friend WithEvents epComa As ErrorProvider
+    Friend WithEvents espera As Timer
 End Class
