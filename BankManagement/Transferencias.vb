@@ -10,10 +10,9 @@
     Private Sub cargarcc()
         Dim query As String
         Dim ds As DataSet
-        Dim cif As String
-        cif = "A11111111"
 
-        query = "SELECT CC FROM cuentas where CIF_emp='" & cif & "'"
+
+        query = "SELECT CC FROM cuentas "
         ds = ad.query(query)
 
         cbcuantaorigen.DataSource = ds.Tables(0)

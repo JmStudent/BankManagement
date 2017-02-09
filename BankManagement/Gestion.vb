@@ -47,9 +47,7 @@
         Me.Close()
     End Sub
 
-    Private Sub pan_body_Paint(sender As Object, e As PaintEventArgs) Handles pan_body.Paint
 
-    End Sub
 
     Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
         Dim res As Integer

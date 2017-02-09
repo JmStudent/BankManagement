@@ -114,6 +114,12 @@
     <Compile Include="liberarC.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ModificarEmpresas.Designer.vb">
+      <DependentUpon>ModificarEmpresas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarEmpresas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="liberarC.resx">
       <DependentUpon>liberarC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarEmpresas.resx">
+      <DependentUpon>ModificarEmpresas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

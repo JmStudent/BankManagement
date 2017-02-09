@@ -34,7 +34,11 @@
             query = "DELETE FROM cc_op where cc in (SELECT CC FROM cuentas where Banco='" & cbbancos.Text & "')"
             ds = ad.query(query)
 
+            query = "DELETE FROM  transfperiod  where cc1 in (SELECT CC FROM cuentas where Banco='" & cbbancos.Text & "')"
+            ds = ad.query(query)
 
+            query = "DELETE FROM  transfperiod  where cc2 in (SELECT CC FROM cuentas where Banco='" & cbbancos.Text & "')"
+            ds = ad.query(query)
 
             MessageBox.Show("Cuentas liberadas con éxito", "Liberar", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
