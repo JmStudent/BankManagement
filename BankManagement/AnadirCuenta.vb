@@ -103,6 +103,11 @@
                         '    MsgBox("j después del if" & j)
                         'Next
                         'MsgBox("permiso concedido, terminado el loop")
+                    Else
+                        Dim ram As String = CStr(ranInt()) & CStr(ranInt()) & CStr(ranInt())
+                        Dim cc As String = dsBank.Tables(0).Rows.Item(CInt(cbBanco.SelectedIndex)).Item(1) & ram
+                        query = "INSERT INTO cuentas (CC, Banco, Oficina, Saldo, Usado)  VALUES('" & cc & "', '" & cbBanco.Text & "', '" & txtOficina.Text & "', " & txtSaldo.Text & ", 0)"
+                        ad.cud(query)
                     End If
                 Catch ex As Exception
                     MessageBox.Show("No se ha podido añadir la/s cuenta/s", "Añadir Cuenta", MessageBoxButtons.OK, MessageBoxIcon.Warning)

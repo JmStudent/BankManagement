@@ -213,60 +213,59 @@
                                 Dim refOrigen As String = dtpDate.Text.Substring(0, 2) & dtpDate.Text.Substring(3, 2) & dtpDate.Text.Substring(8) & subsEOr & subsEDe & conceptSelOri
                                 Dim refDestino As String = dtpDate.Text.Substring(0, 2) & dtpDate.Text.Substring(3, 2) & dtpDate.Text.Substring(8) & subsEOr & subsEDe & conceptSelDes
 
-                                espera.Enabled = True
-                                Threading.Thread.Sleep(3000)
-                                Try
+                            espera.Enabled = True
+                            Try
+                                ''''''''''''''''''''''' ORIGEN ''''''''''''''''''''''''
+                                Dim saldo As Double
+                                query = "SELECT Saldo FROM cuentas WHERE CC = '" & cbCO.Text & "'"
+                                ds = ad.query(query)
+                                If ds.Tables(0).Rows.Count > 0 Then
+                                    saldo = ds.Tables(0).Rows.Item(0).Item(0)
+                                End If
+                                Dim saldoS As String = Replace(txtCant.Text, ".", ",")
+                                If conceptSelOri = "A" Then
+                                    saldo = saldo + CDbl(saldoS)
+                                Else
+                                    saldo = saldo - CDbl(saldoS)
+                                End If
+                                'UPDATE cuentas ORIGEN
+                                query = "UPDATE cuentas SET Saldo = " & Str(saldo) & " WHERE CC = '" & cbCO.Text & "'"
+                                ad.cud(query)
+                                ' INSERT operaciones ORIGEN
+                                query = "INSERT INTO operaciones (tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica) VALUES('" & conceptSelOri & "', '" & refOrigen & "', '" & txtRem.Text & "', '" & hoy & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & Str(saldo) & ", " & cbPer.Text & ")"
+                                ad.cud(query)
+                                'INSERT cc_op ORIGEN
+                                query = "INSERT INTO cc_op (SELECT LAST_INSERT_ID(), '" & cbCO.Text & "', '" & conceptSelOri & "', " & Str(saldo) & ")"
+                                ad.cud(query)
 
-                                    ''''''''''''''''''''''' ORIGEN ''''''''''''''''''''''''
-                                    Dim saldo As Double
-                                    query = "SELECT Saldo FROM cuentas WHERE CC = '" & cbCO.Text & "'"
-                                    ds = ad.query(query)
-                                    If ds.Tables(0).Rows.Count > 0 Then
-                                        saldo = ds.Tables(0).Rows.Item(0).Item(0)
-                                    End If
-                                    Dim saldoS As String = Replace(txtCant.Text, ".", ",")
-                                    If conceptSelOri = "A" Then
-                                        saldo = saldo + CDbl(saldoS)
-                                    Else
-                                        saldo = saldo - CDbl(saldoS)
-                                    End If
-                                    'UPDATE cuentas ORIGEN
-                                    query = "UPDATE cuentas SET Saldo = " & Str(saldo) & " WHERE CC = '" & cbCO.Text & "'"
-                                    ad.cud(query)
-                                    ' INSERT operaciones ORIGEN
-                                    query = "INSERT INTO operaciones (tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica) VALUES('" & conceptSelOri & "', '" & refOrigen & "', '" & txtRem.Text & "', '" & hoy & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & Str(saldo) & ", " & cbPer.Text & ")"
-                                    ad.cud(query)
-                                    'INSERT cc_op ORIGEN
-                                    query = "INSERT INTO cc_op (SELECT LAST_INSERT_ID(), '" & cbCO.Text & "', '" & conceptSelOri & "', " & Str(saldo) & ")"
-                                    ad.cud(query)
-
-                                    ''''''''''''''''''''''' DESTINO ''''''''''''''''''''''''
-                                    query = "SELECT Saldo FROM cuentas WHERE CC = '" & cbCD.Text & "'"
-                                    ds = ad.query(query)
-                                    If ds.Tables(0).Rows.Count > 0 Then
-                                        saldo = ds.Tables(0).Rows.Item(0).Item(0)
-                                    End If
-                                    saldoS = Replace(txtCant.Text, ".", ",")
-                                    If conceptSelDes = "A" Then
-                                        saldo = saldo + CDbl(saldoS)
-                                    Else
-                                        saldo = saldo - CDbl(saldoS)
-                                    End If
-                                    'UPDATE cuentas DESTINO
-                                    query = "UPDATE cuentas SET Saldo = " & Str(saldo) & " WHERE CC = '" & cbCD.Text & "'"
-                                    ad.cud(query)
-                                    ' INSERT operaciones DESTINO
-                                    query = "INSERT INTO operaciones (tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica) VALUES('" & conceptSelDes & "', '" & refDestino & "', '" & txtRem.Text & "', '" & hoy & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & Str(saldo) & ", " & cbPer.Text & ")"
-                                    ad.cud(query)
-                                    'INSERT cc_op ORIGEN
-                                    query = "INSERT INTO cc_op (SELECT LAST_INSERT_ID(), '" & cbCD.Text & "', '" & conceptSelDes & "', " & Str(saldo) & ")"
-                                    ad.cud(query)
-                                Catch ex As Exception
-                                    'Waiting.Close()
-                                    MessageBox.Show("No ha podido realizarse la transferencia por problemas con la base de datos", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                                End Try
+                                ''''''''''''''''''''''' DESTINO ''''''''''''''''''''''''
+                                query = "SELECT Saldo FROM cuentas WHERE CC = '" & cbCD.Text & "'"
+                                ds = ad.query(query)
+                                If ds.Tables(0).Rows.Count > 0 Then
+                                    saldo = ds.Tables(0).Rows.Item(0).Item(0)
+                                End If
+                                saldoS = Replace(txtCant.Text, ".", ",")
+                                If conceptSelDes = "A" Then
+                                    saldo = saldo + CDbl(saldoS)
+                                Else
+                                    saldo = saldo - CDbl(saldoS)
+                                End If
+                                'UPDATE cuentas DESTINO
+                                query = "UPDATE cuentas SET Saldo = " & Str(saldo) & " WHERE CC = '" & cbCD.Text & "'"
+                                ad.cud(query)
+                                ' INSERT operaciones DESTINO
+                                query = "INSERT INTO operaciones (tipo, referencias, remitente, fecha, fecha_valor, concepto, concepto_ext, cantidad, saldo, periodica) VALUES('" & conceptSelDes & "', '" & refDestino & "', '" & txtRem.Text & "', '" & hoy & "', '" & dtpDate.Text & "', '" & cbConcepto.Text & "', '" & txtConEx.Text & "', " & txtCant.Text & ", " & Str(saldo) & ", " & cbPer.Text & ")"
+                                ad.cud(query)
+                                'INSERT cc_op ORIGEN
+                                query = "INSERT INTO cc_op (SELECT LAST_INSERT_ID(), '" & cbCD.Text & "', '" & conceptSelDes & "', " & Str(saldo) & ")"
+                                ad.cud(query)
+                            Catch ex As Exception
                                 'Waiting.Close()
-                                MessageBox.Show("La transferencia se ha realizado con éxito", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                MessageBox.Show("No ha podido realizarse la transferencia por problemas con la base de datos", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                                End Try
+                            'Waiting.Close()
+                            Threading.Thread.Sleep(900)
+                            MessageBox.Show("La transferencia se ha realizado con éxito", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             Else
                                 Try
                                     query = "INSERT INTO transfperiod (cc1, cc2, proximafecha, cantidad, dias) VALUES('" & cbCO.Text & "', '" & cbCD.Text & "', '" & dtpDate.Text & "', " & txtCant.Text & ", " & cbPer.Text & ")"
@@ -379,7 +378,7 @@
         Static tiempo As Integer
         Waiting.Show()
         tiempo += 1
-        If tiempo = 2 Then
+        If tiempo = 3 Then
             Waiting.Close()
             espera.Enabled = False
         End If

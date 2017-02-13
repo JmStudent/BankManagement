@@ -480,7 +480,7 @@ Partial Class GestionarTransferencia
         '
         'espera
         '
-        Me.espera.Interval = 10
+        Me.espera.Interval = 1000
         '
         'GestionarTransferencia
         '
