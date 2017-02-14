@@ -13,7 +13,7 @@
     Private Sub GestionarMovimiento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         pbLogo.SetBounds(oneColumn() * 2.3, 0, 500, 63)
         ' CONSULTAS
-        query = "SELECT * FROM empresas WHERE activa = 1"
+        query = "SELECT * FROM empresas WHERE activa = 1 AND CIF IN (SELECT CIF_emp FROM cuentas WHERE CIF_emp IS NOT NULL)"
         Try
             ' EMPRESA ORIGEN
             ds = ad.query(query)
@@ -77,7 +77,6 @@
             Me.Close()
         End If
     End Sub
-
     Private Sub pbRefresh_Click(sender As Object, e As EventArgs) Handles pbRefresh.Click
         txtRem.Text = ""
         txtCant.Text = ""
@@ -102,10 +101,14 @@
             End If
             query = "SELECT * FROM cuentas WHERE CIF_emp = (" & query2 & ")"
             ds = ad.query(query)
-            For i As Integer = 0 To ds.Tables(0).Rows.Count - 1
-                cbCO.DataSource = ds.Tables(0)
-                cbCO.DisplayMember = "CC"
-            Next
+            If ds.Tables(0).Rows.Count > 0 Then
+                For i As Integer = 0 To ds.Tables(0).Rows.Count - 1
+                    cbCO.DataSource = ds.Tables(0)
+                    cbCO.DisplayMember = "CC"
+                Next
+            Else
+                cbCO.DataSource = Nothing
+            End If
         End If
     End Sub
 
@@ -119,10 +122,14 @@
             End If
             query = "SELECT * FROM cuentas WHERE CIF_emp = (" & query2 & ")"
             ds = ad.query(query)
-            For i As Integer = 0 To ds.Tables(0).Rows.Count - 1
-                cbCD.DataSource = ds.Tables(0)
-                cbCD.DisplayMember = "CC"
-            Next
+            If ds.Tables(0).Rows.Count > 0 Then
+                For i As Integer = 0 To ds.Tables(0).Rows.Count - 1
+                    cbCD.DataSource = ds.Tables(0)
+                    cbCD.DisplayMember = "CC"
+                Next
+            Else
+                cbCD.DataSource = Nothing
+            End If
         End If
     End Sub
     Private Function not_Error_Empty() As Boolean
