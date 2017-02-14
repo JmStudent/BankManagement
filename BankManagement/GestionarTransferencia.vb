@@ -213,7 +213,6 @@
                                 Dim refOrigen As String = dtpDate.Text.Substring(0, 2) & dtpDate.Text.Substring(3, 2) & dtpDate.Text.Substring(8) & subsEOr & subsEDe & conceptSelOri
                                 Dim refDestino As String = dtpDate.Text.Substring(0, 2) & dtpDate.Text.Substring(3, 2) & dtpDate.Text.Substring(8) & subsEOr & subsEDe & conceptSelDes
 
-                            espera.Enabled = True
                             Try
                                 ''''''''''''''''''''''' ORIGEN ''''''''''''''''''''''''
                                 Dim saldo As Double
@@ -260,11 +259,8 @@
                                 query = "INSERT INTO cc_op (SELECT LAST_INSERT_ID(), '" & cbCD.Text & "', '" & conceptSelDes & "', " & Str(saldo) & ")"
                                 ad.cud(query)
                             Catch ex As Exception
-                                'Waiting.Close()
                                 MessageBox.Show("No ha podido realizarse la transferencia por problemas con la base de datos", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                                End Try
-                            'Waiting.Close()
-                            Threading.Thread.Sleep(900)
+                            End Try
                             MessageBox.Show("La transferencia se ha realizado con éxito", "Transferencia", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             Else
                                 Try
@@ -371,16 +367,6 @@
             cbED.Enabled = True
             cbCD.Enabled = True
             cbConcepto.Enabled = True
-        End If
-    End Sub
-
-    Private Sub espera_Tick(sender As Object, e As EventArgs) Handles espera.Tick
-        Static tiempo As Integer
-        Waiting.Show()
-        tiempo += 1
-        If tiempo = 3 Then
-            Waiting.Close()
-            espera.Enabled = False
         End If
     End Sub
 End Class
