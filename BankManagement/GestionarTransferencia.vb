@@ -171,7 +171,6 @@
                             For i = 0 To ds.Tables(0).Rows.Count - 1
                                 Dim account As String = ds.Tables(0).Rows.Item(i).Item(1)
                                 query = "INSERT INTO transfperiod (cc1, cc2, proximafecha, cantidad, dias) VALUES('11111111111111111111111', '" & account & "', '" & dtpDate.Text & "', " & txtCant.Text & ", " & cbPer.Text & ")"
-
                                 ad.cud(query)
                             Next
                         Else
